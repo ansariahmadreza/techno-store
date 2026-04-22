@@ -67,7 +67,7 @@ const Profileuser = () => {
     }
 
     return (
-        <div className="mt-[200px] shadow-2xl text-center w-[400px] mx-auto min-h-[200px] border-neutral-400 rounded border p-6">
+        <div className="mt-50 shadow-2xl text-center w-100 mx-auto min-h-50 border-neutral-400 rounded border p-6">
             <section className="mt-5">
                 <h2 className="text-xl font-bold mb-4">
                     <span className="inline-block text-gray-600">حساب کاربری:</span>
