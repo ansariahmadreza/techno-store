@@ -1,0 +1,251 @@
+
+
+// تابع ساخت slug از توضیحات
+const createSlug = (text: string) => {
+    return text
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-آ-ی]/g, '')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '')
+        .toLowerCase();
+};
+
+export interface ProductSlider {
+    id: string;
+    image: string;
+    alt: string;
+}
+
+export interface CarouselItem {
+    id: string;
+    image: string;
+    description: string;
+    Price: number;
+    DiscountedPrice: number;
+    Discountpercentage: number
+}
+
+export interface Product {
+    title: string;
+    id: string;
+    slug: string;
+    image: string;
+    description: string;
+    Price: number;
+    Score: number;
+}
+
+export interface User {
+
+    slug: string
+    namefamily: string;
+    email: string;
+    password: string;
+    confrimPassword: string;
+    createdAt?: string;
+
+}
+
+export const productSlider: ProductSlider[] = [
+    {
+        id: "1",
+        image: "/img/1.gif",
+        alt: "به وقت خرید"
+    },
+    {
+        id: "2",
+        image: "/img/2.webp",
+        alt: "تجهیزات ذخیره سازی"
+    },
+    {
+        id: "3",
+        image: "/img/3.webp",
+        alt: "گوشی های سامسونگ"
+    },
+    {
+        id: "4",
+        image: "/img/4.webp",
+        alt: "ابزار حرفه ای "
+    }
+]
+
+export const carouselItems: CarouselItem[] = [
+    {
+        id: "1",
+        image: "/technoOff/1.webp",
+        description: "گوشی موبایل جنرال لوکس مدل F35 دو سیم کارت ظرفیت 64 گیگابایت رم 4 گیگابایت",
+        Price: 7500000,
+        DiscountedPrice: 6375000,
+        Discountpercentage: 15
+    },
+    {
+        id: "2",
+        image: "/technoOff/2.webp",
+        description: "دسته PS5 مدل DualSens White",
+        Price: 69990000,
+        DiscountedPrice: 55000000,
+        Discountpercentage: 21
+    },
+    {
+        id: "3",
+        image: "/technoOff/3.webp",
+        description: "کیس کامپیوتر گرین مدل GRIFFIN G8",
+        Price: 9250000,
+        DiscountedPrice: 8500000,
+        Discountpercentage: 8
+    },
+    {
+        id: "4",
+        image: "/technoOff/4.webp",
+        description: "اپل واچ SE Gen2 2024 سایز 40 میلی متری",
+        Price: 27000000,
+        DiscountedPrice: 20000000,
+        Discountpercentage: 26
+    },
+    {
+        id: "5",
+        image: "/technoOff/5.webp",
+        description: " مانیتور ای او سی مدل 27 سایز 27 اینچ G42E",
+        Price: 14350000,
+        DiscountedPrice: 12000000,
+        Discountpercentage: 16
+    },
+    {
+        id: "6",
+        image: "/technoOff/6.webp",
+        description: "گوشی موبایل اپل مدل iphone 16 CH/A ظرفیت 28 گیگابایت رم 8 گیگابایت ریجستر شده",
+        Price: 100999000,
+        DiscountedPrice: 95000000,
+        Discountpercentage: 6
+    },
+    {
+        id: "7",
+        image: "/technoOff/7.webp",
+        description: " مدل Galaxy a16 4G ظرفیت 128 گیگابایت  رم 4 گیگابایت - ویتنام گوشی موبایل سامسونگ",
+        Price: 14300000,
+        DiscountedPrice: 11000000,
+        Discountpercentage: 15
+    },
+    {
+        id: "8",
+        image: "/technoOff/8.webp",
+        description: "اپل واچ سری 11 آلومینیوم مدل 42 میلی متری GPS با بند Sport",
+        Price: 9188000,
+        DiscountedPrice: 8100000,
+        Discountpercentage: 12
+    },
+    {
+        id: "9",
+        image: "/technoOff/9.webp",
+        description: "گوشی موبایل ناتینگ مدل phone 3 5G ظرفیت 256 گیگابایت  رم 12 گیگابایت",
+        Price: 89000000,
+        DiscountedPrice: 80000000,
+        Discountpercentage: 10
+    }
+]
+
+
+export const products: Product[] = [
+    {
+        title: "محصول 1",
+        id: "11",
+        slug: createSlug("گوشی موبایل شیائومی مدل Poco C71 ظرفیت 64 گیگابایت رم 3 گیگابایت"),
+        image: "/Products/1.webp",
+        description: "گوشی موبایل شیائومی مدل Poco C71 ظرفیت 64 گیگابایت رم 3 گیگابایت",
+        Price: 7739000,
+        Score: 4.2
+    },
+    {
+        title: "محصول 2",
+        id: "12",
+        slug: createSlug("گوشی موبایل سامسونگ Galaxy S25 Ultra 5G ظرفیت 256 گیگابایت رم 12 گیگابایت - ویتنام"),
+        image: "/Products/2.webp",
+        description: "گوشی موبایل سامسونگ Galaxy S25 Ultra 5G ظرفیت 256 گیگابایت رم 12 گیگابایت - ویتنام",
+        Price: 140900000,
+        Score: 3.8
+    },
+    {
+        title: "محصول 3",
+        id: "13",
+        slug: createSlug("مچ بند هوشمند شیائومی مدل Mi Band 10"),
+        image: "/Products/3.webp",
+        description: "مچ بند هوشمند شیائومی مدل Mi Band 10",
+        Price: 4129000,
+        Score: 4.9
+    },
+    {
+        title: "محصول 4",
+        id: "14",
+        slug: createSlug("تبلت اپل مدل iPad WiFi (2025) ظرفیت 128 گیگابایت رم 6 گیگابایت"),
+        image: "/Products/4.webp",
+        description: "تبلت اپل مدل iPad WiFi (2025) ظرفیت 128 گیگابایت رم 6 گیگابایت",
+        Price: 40990000,
+        Score: 2.8
+    },
+    {
+        title: "محصول 5",
+        id: "15",
+        slug: createSlug("لپ تاپ 15.6 اینچی اچ پی مدل Victus 15 FA2013DX i5 13420H 16GB 1TB RTX 3050"),
+        image: "/Products/5.webp",
+        description: " لپ تاپ 15.6 اینچی اچ پی مدل Victus 15 FA2013DX i5 13420H 16GB 1TB RTX 3050",
+        Price: 84650000,
+        Score: 4.5
+    },
+    {
+        title: "محصول 6",
+        id: "16",
+        slug: createSlug("لپ تاپ ام اس آی 15.6 اینچی مدل Cyborg 15 A13VE i7 13620H 16GB 1TB RTX4050"),
+        image: "/Products/6.webp",
+        description: "لپ تاپ ام اس آی 15.6 اینچی مدل Cyborg 15 A13VE i7 13620H 16GB 1TB RTX4050",
+        Price: 102500000,
+        Score: 4.6
+    },
+    {
+        title: "محصول 7",
+        id: "17",
+        slug: createSlug("لپ تاپ لنوو 15.6 اینچی مدل LOQ i5 13450HX 24GB 512GB RTX3050"),
+        image: "/Products/7.webp",
+        description: " لپ تاپ لنوو 15.6 اینچی مدل LOQ i5 13450HX 24GB 512GB RTX3050",
+        Price: 84000000,
+        Score: 3.1
+    },
+    {
+        title: "محصول 8",
+        id: "18",
+        slug: createSlug("دریل چکشی رونیکس مدل RS-0005 مجموعه 54 عددی"),
+        image: "/Products/8.webp",
+        description: "دریل چکشی رونیکس مدل RS-0005 مجموعه 54 عددی",
+        Price: 3730000,
+        Score: 1.8
+    },
+    {
+        title: "محصول 9",
+        id: "19",
+        slug: createSlug("پمپ باد شیائومی مدل 2 Pro"),
+        image: "/Products/9.webp",
+        description: "پمپ باد شیائومی مدل 2 Pro",
+        Price: 4750000,
+        Score: 4.8
+    },
+    {
+        title: "محصول 10",
+        id: "20",
+        slug: createSlug("گوشی موبایل نوکیا مدل 106 (2018) ظرفیت 4 مگابایت رم 4 مگابایت - مونتاژ ایران"),
+        image: "/Products/10.webp",
+        description: "گوشی موبایل نوکیا مدل 106 (2018) ظرفیت 4 مگابایت رم 4 مگابایت - مونتاژ ایران",
+        Price: 1890000,
+        Score: 4.2
+    }
+]
+
+export const users: User[] = [
+    {
+        slug: "miel9c8gi3hn",
+        namefamily: "test",
+        email: "test@gmail.com",
+        password: "123456A",
+        confrimPassword: "123456A",
+        createdAt: new Date().toISOString()
+    }
+];

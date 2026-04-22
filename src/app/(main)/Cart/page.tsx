@@ -20,8 +20,8 @@ const Cart = () => {
     useEffect(() => {
         const baseUrl = process.env.NEXT_PUBLIC_API_URL;
         axios.all([
-            axios.get(`${baseUrl}/Products`),
-            axios.get(`${baseUrl}/Carousel`)
+            axios.get(`/Products`),
+            axios.get(`/Carousel`)
         ]).then(
             axios.spread((productsRes, carouselRes) => {
                 setProducts(productsRes.data)

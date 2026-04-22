@@ -51,9 +51,6 @@ const Nav = () => {
                                 <li>
                                     <Link target="_blank" href="/*">فروشنده شو</Link>
                                 </li>
-                                <li>
-                                    (منو همبرگری صرفا)
-                                </li>
                             </ul>
                         </nav>
 

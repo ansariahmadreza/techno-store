@@ -34,7 +34,7 @@ const CartItemRootCarousel = ({ info, qty }: IcartItemsProps) => {
                         <p className="text-base">
                             تعداد سفارش: <span className="font-semibold">{qty}</span>
                         </p>
-                        <p className="text-base">    قیمت محصول <span className="font-semibold">{formatNumberWithCommas(info.Price ?? 0)}</span> تومان </p>
+                        <p className="text-base">قیمت محصول <span className="font-semibold">{formatNumberWithCommas(info.Price ?? 0)}</span> تومان </p>
                         <p className="text-sm text-neutral-500"> قیمت با تخفیف:
                             <span className="font-semibold">{formatNumberWithCommas(info.DiscountedPrice ?? 0)}</span> تومان</p>
 

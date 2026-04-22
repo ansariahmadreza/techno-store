@@ -1,87 +1,108 @@
 "use client"
-import { useForm } from "react-hook-form"; ///برای مدیریت فرم و گرفتن داده ها
-import { zodResolver } from "@hookform/resolvers/zod";/// وصل کردن قوانین zod به react hook form
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import cookie from "js-cookie"
 import axios from "axios";
 import { type RegisterFormData, userSchema } from "@/utils/valid";
 import Link from "next/link";
 import { useUserStore } from "../../../zustand";
+import { useRouter } from "next/navigation";
 
 const Formhandler = () => {
-    const [serverMessage, setServerMessage] = useState('')/// نمایش پیغام ثبت نام موفقیت امیز بود
+    const [serverMessage, setServerMessage] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
     const { setUser } = useUserStore()
+    const router = useRouter()
 
-    /// به صورت کلی یه فرم بساز که فیلد هاش طبق registerFormData باشن و اعتبار سنجی طبق userSchema با zod انجام بشه
-    const { register, /// هر input رو به فرم وصل میکنه
-        handleSubmit, ///برای هندل کردن ارسال فرم
-        formState: { errors // اگر خطا در گرفتن داده ها بود پیام اینجا ذخیره بشه
-            , isSubmitting /// نشون میده فرم در هر ارسال هست یا خیر
-        } }
-        = useForm<RegisterFormData>({
-            resolver: zodResolver(userSchema)
-        })
-    ///شبیه سازی وضعیت بک اند
+    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<RegisterFormData>({
+        resolver: zodResolver(userSchema)
+    })
+
     const onSubmit = async (data: RegisterFormData) => {
+        setIsLoading(true)
+        setServerMessage("")
+        
         try {
-            const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-            setServerMessage("")
-            const checkEmailUser = await axios.get(`${baseUrl}/users?email=${data.email}`);
-            if (checkEmailUser.data.length > 0) {
-                setServerMessage("این کاربر قبلاً ثبت‌ نام کرده است");
-                return;
+            // ثبت نام کاربر جدید
+            const registerResponse = await axios.post('/api/users/register', {
+                namefamily: data.name,
+                email: data.email,
+                password: data.password,
+                confrimPassword: data.confirmPassword
+            });
+            
+            // بررسی موفقیت آمیز بودن ثبت نام
+            if (registerResponse.data.success) {
+                const { token, user } = registerResponse.data;
+                
+                // ذخیره توکن در کوکی
+                cookie.set('token', token, { expires: 365 });
+                
+                // ذخیره اطلاعات کاربر در store
+                setUser(user);
+                
+                setServerMessage(registerResponse.data.message || "ثبت نام با موفقیت انجام شد");
+                
+                // رفتن به صفحه اصلی بعد از 1 ثانیه
+                setTimeout(() => {
+                    router.push("/");
+                }, 1000);
+            } else {
+                setServerMessage(registerResponse.data.message || "خطا در ثبت نام");
             }
-            setServerMessage("ثبت نام با موفقیت انجام شد")
-            setUser(data)
-            handleLogin(data)
-        } catch (err) {
-            setServerMessage("مشکلی پیش امد")
+            
+        } catch (err: any) {
+            console.error("Registration error:", err);
+            
+            // مدیریت خطاهای مختلف
+            if (err.response?.status === 409) {
+                setServerMessage(err.response?.data?.message || "این ایمیل قبلاً ثبت نام کرده است");
+            } else if (err.response?.status === 400) {
+                const errorData = err.response?.data;
+                if (errorData?.errors && errorData.errors.length > 0) {
+                    setServerMessage(errorData.errors[0]);
+                } else {
+                    setServerMessage(errorData?.message || "خطا در اعتبارسنجی اطلاعات");
+                }
+            } else if (err.response?.status === 500) {
+                setServerMessage("خطای سرور. لطفاً دوباره تلاش کنید.");
+            } else {
+                setServerMessage("مشکلی پیش آمد. لطفاً دوباره تلاش کنید.");
+            }
+        } finally {
+            setIsLoading(false)
         }
     };
-    const handleLogin = async (user: RegisterFormData) => {
-        const response = {
-            token: 'sdgsdgxvcxcv',
-            export: 365
-        }
-        cookie.set('token', response.token, { expires: response.export })
-
-        const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
-        await axios({
-            method: "POST",
-            url: `${API_URL}/users`,
-            data: {
-                id: Math.floor(Math.random() * 100000).toString(),
-                namefamily: user.name,
-                email: user.email,
-                password: user.password,
-                confrimPassword: user.confirmPassword
-            }
-        })
-        window.location.href = "/"
-    }
 
     return (
         <div>
             <form className="flex flex-col items-center justify-center gap-3 pt-7" onSubmit={handleSubmit(onSubmit)} >
-                <input type="text" {...register('name')} className="outline-0 border rounded p-1 w-[300px]" placeholder="نام  و نام خانوادگی" />
-                {errors.name && <p>{errors.name.message}</p>}
+                <input type="text" {...register('name')} className="outline-0 border rounded p-1 w-[300px]" placeholder="نام و نام خانوادگی" />
+                {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
+                
                 <input type="email" {...register("email")} className="outline-0 border rounded p-1 w-[300px]" placeholder="ایمیل" />
-                {errors.email && <p>{errors.email.message}</p>}
-                <input type="password" placeholder="رمز عبور" className="outline-0 border rounded p-1 w-[300px]"  {...register("password")} />
-                {errors.password && <p>{errors.password.message}</p>}
+                {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+                
+                <input type="password" placeholder="رمز عبور" className="outline-0 border rounded p-1 w-[300px]" {...register("password")} />
+                {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
+                
                 <input type="password" {...register("confirmPassword")} className="outline-0 border rounded p-1 w-[300px]" placeholder="تکرار رمز عبور" />
-                {errors.confirmPassword && (<p>{errors.confirmPassword.message}</p>)}
-                <Link href={"login/ExistingUser"} className="text-[14px]">در صورتی که ثبت نام کرده اید از اینجا وارد شوید</Link>
+                {errors.confirmPassword && <p className="text-red-500 text-sm">{errors.confirmPassword.message}</p>}
+                
+                <Link href={"/login/ExistingUser"} className="text-[14px] text-blue-600 hover:underline">
+                    در صورتی که ثبت نام کرده اید از اینجا وارد شوید
+                </Link>
+                
                 <button type="submit"
-                    disabled={isSubmitting}
-                    className={`p-1 text-white rounded-lg cursor-pointer mt-9 ${isSubmitting ? "bg-gray-400" : "bg-blue-600 hover:bg-blue-700"}`}
+                    disabled={isSubmitting || isLoading}
+                    className={`p-2 text-white rounded-lg cursor-pointer mt-9 w-[300px] transition-colors ${(isSubmitting || isLoading) ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"}`}
                 >
-                    {!isSubmitting ? "ثبت نام" : "...در حال ارسال"}
+                    {(isSubmitting || isLoading) ? "...در حال ارسال" : "ثبت نام"}
                 </button>
+                
                 {serverMessage && (
-                    <p className={`text-center mt-2 ${serverMessage.includes("ثبت نام با موفقیت انجام شد") ? "text-green-600" : "text-red-600"
-                        }`}>
+                    <p className={`text-center mt-2 ${(serverMessage.includes("موفقیت") || serverMessage.includes("انجام شد")) ? "text-green-600" : "text-red-600"}`}>
                         {serverMessage}
                     </p>
                 )}
@@ -89,4 +110,5 @@ const Formhandler = () => {
         </div>
     )
 }
+
 export default Formhandler;

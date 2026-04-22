@@ -58,7 +58,7 @@ const SwiperCarousel = ({ Carousel }: { Carousel: RootCarousel[] }) => {
                                     
                                     <section className="text-[14px] mt-1">
                                         <span className="text-neutral-500 float-left">تومان</span>
-                                        <span className="text-neutral-500 float-left  line-through ml-2  ">{formatNumberWithCommas(item.Price)} </span>
+                                        <span className="text-neutral-500 float-left  line-through ml-2">{formatNumberWithCommas(item.Price)} </span>
                                     </section>
                                 </Link>
                             </SwiperSlide>
