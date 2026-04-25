@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 import MSWProvider from '@/components/MSWProvider';
 
-const inter = Inter({ subsets: ['latin'] });
+
 
 export const metadata: Metadata = {
   title: 'Your App',
@@ -17,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fa" dir="rtl">
-      <body className={inter.className}>
+      <body>
         <MSWProvider>
           {children}
         </MSWProvider>
