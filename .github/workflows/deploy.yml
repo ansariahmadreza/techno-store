@@ -1,5 +1,7 @@
 name: Deploy Next.js to GitHub Pages
 
+env:
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
 on:
   push:

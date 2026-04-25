@@ -3,7 +3,6 @@ import './globals.css';
 import MSWProvider from '@/components/MSWProvider';
 
 
-
 export const metadata: Metadata = {
   title: 'Your App',
   description: 'Your app description',
