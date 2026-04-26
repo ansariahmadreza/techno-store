@@ -1,14 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // output: 'export',  // این خط را کاملاً حذف یا کامنت کنید
 
-  // اگر پروژه شما در یک ساب‌پوشه (مثل username.github.io/repo-name/) قرار می‌گیرد
-  // نام مخزن خود را جایگزین کنید
-  // basePath: '/techno-store',
-
+  
   images: {
-    unoptimized: true, // برای hosted شدن روی GitHub Pages لازم است
+    unoptimized: true,  // لازمه برای GitHub Pages
   },
+  
+  trailingSlash: true,  // برای مسیردهی بهتر
+  
+  // اگه مخزن تو ساب‌پوشه هست (مثل username.github.io/repo-name/)
+  // basePath: '/techno-clone.github.io',
 }
 
 module.exports = nextConfig
