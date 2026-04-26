@@ -75,7 +75,7 @@ const Page = () => {
                             type="email" 
                             {...register("email")} 
                             className="w-full outline-none border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                            placeholder="test@gmail.com" 
+                            placeholder="ahmadreza.an.dev@gmail.com" 
                         />
                         {errors.email && (
                             <p className="text-red-500 text-sm mt-2 flex items-center gap-1">

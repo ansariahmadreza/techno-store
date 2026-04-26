@@ -10,11 +10,11 @@ const Login = () => {
         <section className="flex flex-col md:flex-row items-start md:items-stretch w-full min-h-screen">
 
             <div className="w-full md:w-1/2">
-                <img src="/Logos/logo-Login.webp" alt="logo-Login" className="w-full md:w-[1100px] h-[300px] sm:h-[400px] md:h-[742px] object-cover object-center" />
+                <img src="/Logos/logo-Login.webp" alt="logo-Login" className="w-full md:w-275 h-75 sm:h-100 md:h-185.5 object-cover object-center" />
             </div>
 
             <div className="w-full md:w-1/2 flex flex-col items-center justify-center p-5">
-                <img src="/Logos/static_logo_techno_new.svg" alt="static_logo" className="w-[150px] mx-auto pt-[50px]" />
+                <img src="/Logos/static_logo_techno_new.svg" alt="static_logo" className="w-37.5 mx-auto pt-12.5" />
                 <h2 className="pt-10 text-[18px] text-center font-bold">
                     ورود | ثبت نام
                 </h2>

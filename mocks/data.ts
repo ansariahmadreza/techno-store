@@ -242,8 +242,8 @@ export const products: Product[] = [
 export const users: User[] = [
     {
         slug: "miel9c8gi3hn",
-        namefamily: "test",
-        email: "test@gmail.com",
+        namefamily: "Ahmadreza",
+        email: "ahmadreza.an.dev@gmail.com",
         password: "123456A",
         confrimPassword: "123456A",
         createdAt: new Date().toISOString()

@@ -5,10 +5,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { products, type Product } from "../../../../../mocks/data";
 
+
+
 const Store = () => {
     const params = useParams();
     const encodedSlug = params.slug as string;
-    
+
     // دیکود کردن slug از URL
     const slug = encodedSlug ? decodeURIComponent(encodedSlug) : "";
 
@@ -19,7 +21,7 @@ const Store = () => {
     useEffect(() => {
         console.log("🔍 encodedSlug from URL:", encodedSlug);
         console.log("🔍 decoded slug:", slug);
-        
+
         if (!slug) {
             setLoading(false);
             setError("آدرس محصول نامعتبر است");
@@ -28,9 +30,9 @@ const Store = () => {
 
         // پیدا کردن محصول بر اساس slug
         const foundProduct = products.find(product => product.slug === slug);
-        
+
         console.log("✅ foundProduct:", foundProduct ? foundProduct.title : "NOT FOUND");
-        
+
         if (foundProduct) {
             setProduct(foundProduct);
             setError(null);
@@ -60,8 +62,8 @@ const Store = () => {
         <section>
             <title>{product.description}</title>
             <section
-                className="w-[90%] max-w-[1100px] pb-[120px] sm:flex-row items-center gap-6
-             mx-auto mt-[100px] rounded-md shadow-2xl border-2 border-neutral-200 p-6 flex flex-col"
+                className="w-[90%] max-w-275 pb-30 sm:flex-row items-center gap-6
+             mx-auto mt-25 rounded-md shadow-2xl border-2 border-neutral-200 p-6 flex flex-col"
             >
                 <div className="flex justify-center w-full sm:w-1/3">
                     <img

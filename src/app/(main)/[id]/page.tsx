@@ -5,10 +5,12 @@ import { RootCarousel } from "../components/mainPage/helper/swipercarsouel";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 
+
+
 const Store = () => {
   const params = useParams();
   const id = params.id as string;
-  
+
   const [product, setProduct] = useState<RootCarousel | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -16,18 +18,18 @@ const Store = () => {
 
   useEffect(() => {
     if (!id) return;
-    
+
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`/Carousel/${id}`, { 
-          cache: "no-cache" 
+        const res = await fetch(`/Carousel/${id}`, {
+          cache: "no-cache"
         });
-        
+
         if (!res.ok) {
           throw new Error("محصول پیدا نشد");
         }
-        
+
         const data = await res.json();
         setProduct(data);
       } catch (err) {
@@ -61,7 +63,7 @@ const Store = () => {
   return (
     <div>
       <title>{product.description}</title>
-      <section className="w-[90%] max-w-[1100px] pb-[120px] mx-auto mt-[100px] rounded-md shadow-2xl border-2 border-neutral-200 p-6 flex flex-col sm:flex-row items-center gap-6">
+      <section className="w-[90%] max-w-275 pb-30 mx-auto mt-25 rounded-md shadow-2xl border-2 border-neutral-200 p-6 flex flex-col sm:flex-row items-center gap-6">
         <div className="flex justify-center w-full sm:w-1/3">
           <img
             src={product.image}
