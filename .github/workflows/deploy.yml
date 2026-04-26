@@ -22,6 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -53,16 +54,16 @@ jobs:
       - name: Build
         run: pnpm run build
         
-      - name: List output directory
-        run: ls -la ./out || echo "out directory not found"
+      - name: Create output directory for .nojekyll
+        run: mkdir -p .next
         
-      - name: Create .nojekyll file
-        run: touch ./out/.nojekyll
+      - name: Add .nojekyll file
+        run: touch .next/.nojekyll
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out  # این درست کار خواهد کرد چون output: 'export' را اضافه کرده‌اید
+          path: ./.next
 
   deploy:
     environment:
