@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { users } from '../../../../../mocks/data';  // مسیر فایل data.ts رو درست کن
 
 interface UserInfo {
     slug: string;
@@ -9,6 +8,7 @@ interface UserInfo {
     email: string;
     createdAt?: string;
 }
+
 
 const Profileuser = () => {
     const params = useParams();

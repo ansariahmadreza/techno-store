@@ -34,12 +34,6 @@ const Footer = () => {
 
                             </Link>
 
-                            <Link href={"https://github.com/typicode/json-server"} target="_blank">
-                                <div className="flex flex-col items-center">
-                                    <img src="/icons/json-file-svgrepo-com.svg" className="w-10 h-10 cursor-pointer" alt="json-server" title="json-server" />
-                                    <p className="text-[12px] mt-1">json-server</p>
-                                </div>
-                            </Link>
 
                             <Link href={"https://nextjs.org/"} target="_blank">
                                 <div className="flex flex-col items-center">

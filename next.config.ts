@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-
+  // output: 'export',  // برگردونیم (برای استاتیک خروجی گرفتن)
   
   images: {
     unoptimized: true,  // لازمه برای GitHub Pages

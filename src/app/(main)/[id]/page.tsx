@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 
 
-
 const Store = () => {
   const params = useParams();
   const id = params.id as string;
