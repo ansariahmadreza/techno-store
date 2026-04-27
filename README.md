@@ -11,7 +11,6 @@ This is a modern tech blog platform inspired by **Technolife** design. My main g
 - 📄 **Smart Pagination** - Easy navigation with clickable page numbers
 - 🎯 **MSW API Mocking** - All network requests are handled by Mock Service Worker (no real backend needed)
 - 📱 **Responsive Design** - Great user experience on all devices (mobile, tablet, desktop)
-- ⚡ **High Performance** - Built with Next.js App Router + Turbopack for fast development
 
 ## 🛠️ Tech Stack
 
