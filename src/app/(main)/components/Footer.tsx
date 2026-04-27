@@ -6,13 +6,13 @@ const Footer = () => {
     return (
         <Container>
             <footer>
-                <section className="bg-linear-to-r p-4 mt-15 mb-2 w-full min-h-[450px] 
+                <section className="bg-linear-to-r p-4 mt-15 mb-2 w-full min-h-112.5 
              rounded-[30px]  from-blue-500 to-blue-900">
                     <Link href={"https://www.technolife.com/"}>
-                        <img src="/Logos/1.svg" alt="logo" className="mt-15 mr-6 w-[180px] h-[100px] mx-auto md:mx-0" />
+                        <img src="/Logos/1.svg" alt="logo" className="mt-15 mr-6 w-45 h-25 mx-auto md:mx-0" />
                     </Link>
 
-                    <div className="w-full mt-10 text-center h-[200px] 
+                    <div className="w-full mt-10 text-center h-50 
                     border-t-2 font-bold pt-5 border-neutral-200 ">
                         <p>ساخته شده با این ابزار</p>
                         <section className="flex flex-wrap justify-center 
