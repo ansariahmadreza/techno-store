@@ -20,13 +20,11 @@ An e-commerce frontend project built with **Next.js** and **TypeScript**, featur
 ## 🧰 Technologies
 
 * ⚛️ Next.js
-* ⚛️ React
 * 🟦 TypeScript
 * 🎨 Tailwind CSS
 * 🧪 MSW (Mock Service Worker)
 * 🧩 Context API for cart management
 * 📝 React Hook Form + Yup for form validation
-* 🎞️ Framer Motion and GSAP for animations
 * 🌐 Axios for HTTP requests
 
 ---
@@ -49,6 +47,9 @@ An e-commerce frontend project built with **Next.js** and **TypeScript**, featur
 * 📦 `public/` – static assets and `mockServiceWorker.js`
 
 ---
+
+## 🌐 Live Demo
+https://techno-store-two.vercel.app/
 
 ## ⚙️ Setup
 
@@ -95,18 +96,12 @@ pnpm export
 This project uses **MSW (Mock Service Worker)** for fast development and simulates the following endpoints:
 
 
-
-
-
 ## 🧪 Mock API Endpoints
 
-
 ### 📦 Products
-
 * `GET /products`
 
 ### 🎞️ Carousel
-
 * `GET /carousel`
 * `GET /carousel/:id`
 
