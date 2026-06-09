@@ -8,7 +8,6 @@ import DropDownProfile from "./DropDownMenu";
 import Search from "../Search";
 
 
-
 const TopHeader = () => {
 
     const { cartTotalQty } = useShoppingCartContext();

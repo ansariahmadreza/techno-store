@@ -31,12 +31,12 @@ export const handlers = [
     }),
 
     //  Carousel
-    http.get('/Carousel', () => {
+    http.get('/carousel', () => {
         //console.log(' MSW: GET /Carousel');
         return HttpResponse.json(carouselItems);
     }),
 
-    http.get('/Carousel/:id', ({ params }) => {
+    http.get('/carousel/:id', ({ params }) => {
         const { id } = params;
         const item = carouselItems.find(c => c.id === id);
 

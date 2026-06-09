@@ -4,7 +4,6 @@ import Slider from "./components/mainPage/helper/Slider";
 
 
 const home = () => {
-
     return (
         <section>
             <Slider />
@@ -15,7 +14,6 @@ const home = () => {
             </Container>
         </section>
     )
-
 };
 
 export default home;

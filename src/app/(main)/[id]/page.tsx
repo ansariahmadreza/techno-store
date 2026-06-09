@@ -14,6 +14,8 @@ const Store = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  console.log("product:",product)
+  console.log("id",id)
 
   useEffect(() => {
     if (!id) return;
@@ -21,7 +23,7 @@ const Store = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`/api/carousel/${id}`, {
+        const res = await fetch(`/carousel/${id}`, {
           cache: "no-cache"
         });
 
@@ -58,6 +60,8 @@ const Store = () => {
   }
 
   const Purchaseprofit = product.Price - product.DiscountedPrice;
+
+
 
   return (
     <div>
