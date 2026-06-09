@@ -14,6 +14,8 @@ const Store = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  console.log("product:",product)
+
   useEffect(() => {
     if (!id) return;
 
