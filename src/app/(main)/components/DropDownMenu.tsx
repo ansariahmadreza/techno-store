@@ -80,6 +80,8 @@ const DropDownProfile = () => {
         return <CiUser className="shadow-lg h-7 w-7 rounded" />;
     }
 
+    console.log("lastUser:", lastUser)
+    console.log("alldata:", allData)
 
     return (
         <div onMouseLeave={() => setHover(false)} onMouseOver={() => setHover(true)}>
