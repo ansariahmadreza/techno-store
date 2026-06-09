@@ -17,7 +17,7 @@ const Slider = () => {
         const fetchSliderData = async () => {
             try {
                 setLoading(true);
-                const response = await fetch('/ProductSlider', {
+                const response = await fetch('/productslider', {
                     cache: "no-store"
                 });
                 

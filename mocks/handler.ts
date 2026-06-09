@@ -13,11 +13,11 @@ const generateRandomSlug = () => {
 
 export const handlers = [
     // ProductSlider
-    http.get('/ProductSlider', () => {
+    http.get('/productslider', () => {
         return HttpResponse.json(productSlider);
     }),
 
-    http.get('/ProductSlider/:id', ({ params }) => {
+    http.get('/productslider/:id', ({ params }) => {
         const { id } = params;
         const item = productSlider.find(p => p.id === id);
 
@@ -50,7 +50,7 @@ export const handlers = [
     }),
 
     //  Products
-    http.get('/Products', ({ request }) => {
+    http.get('/products', ({ request }) => {
         //  console.log(' MSW: GET /Products');
 
         const url = new URL(request.url);
