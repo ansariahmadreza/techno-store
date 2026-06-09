@@ -4,7 +4,7 @@ import MSWProvider from '@/components/MSWProvider';
 
 
 export const metadata: Metadata = {
-  title: 'TechnoStore',
+  title: 'techno-store',
   description: 'Your app description',
 };
 
