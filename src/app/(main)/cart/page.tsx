@@ -20,8 +20,8 @@ const Cart = () => {
 
     useEffect(() => {
         axios.all([
-            axios.get(`/products`),
-            axios.get(`/carousel`)
+            axios.get(`/api/products`),
+            axios.get(`/api/carousel`)
         ]).then(
             axios.spread((productsRes, carouselRes) => {
                 setProducts(productsRes.data)

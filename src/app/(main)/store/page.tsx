@@ -9,7 +9,7 @@ const Products = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/products')
+        fetch('/api/products')
             .then(res => res.json())
             .then(data => {
                 setShowData(data);

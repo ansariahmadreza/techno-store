@@ -19,7 +19,7 @@ const SwiperCar = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/Carousel', { cache: 'no-store' })
+        fetch('/api/carousel', { cache: 'no-store' })
             .then(res => res.json())
             .then(data => {
                 setCarousel(data);

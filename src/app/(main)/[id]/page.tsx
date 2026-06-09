@@ -21,7 +21,7 @@ const Store = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`/Carousel/${id}`, {
+        const res = await fetch(`/api/carousel/${id}`, {
           cache: "no-cache"
         });
 
