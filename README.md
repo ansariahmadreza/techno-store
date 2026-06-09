@@ -94,14 +94,34 @@ pnpm export
 
 This project uses **MSW (Mock Service Worker)** for fast development and simulates the following endpoints:
 
-* 📦 `GET /Products`
-* 🎞️ `GET /Carousel`
-* 🖼️ `GET /ProductSlider`
-* 🧾 `POST /api/users/register`
-* 👤 `GET /api/users`
-* 🔎 `GET /api/users/by-slug/:slug`
-* 📧 `GET /api/users/check-email`
 
+
+
+
+## 🧪 Mock API Endpoints
+
+
+### 📦 Products
+
+* `GET /products`
+
+### 🎞️ Carousel
+
+* `GET /carousel`
+* `GET /carousel/:id`
+
+### 🖼️ Product Slider
+
+* `GET /productslider`
+* `GET /productslider/:id`
+
+
+### 🧾 Users
+
+* `POST /api/users/register`
+* `GET /api/users`
+* `GET /api/users/by-slug/:slug`
+* `GET /api/users/check-email`
 Product and user data are stored in `mocks/data.ts`.
 
 ---
