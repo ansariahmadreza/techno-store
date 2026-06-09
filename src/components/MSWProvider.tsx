@@ -1,6 +1,4 @@
-// components/MSWProvider.tsx
 'use client';
-
 import { useEffect, useState } from 'react';
 
 export default function MSWProvider({
@@ -8,32 +6,44 @@ export default function MSWProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [isReady, setIsReady] = useState(false);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const initMSW = async () => {
-      if (process.env.NODE_ENV === 'development') {
-        try {
-          const { worker } = await import('../../mocks/browser');
-          await worker.start({
-            onUnhandledRequest: 'bypass', // درخواست‌های بدون هندلر را نادیده بگیر
-            // یا می‌توانید از 'warn' استفاده کنید تا در کنسول اخطار دهد
-          });
-          setIsReady(true);
-        } catch (error) {
-          setIsReady(true); // حتی اگر MSW شروع نشد، برنامه را اجرا کن
+    // فقط در development اجرا شود
+    if (process.env.NODE_ENV !== 'development') {
+      setReady(true);
+      return;
+    }
+
+    let mounted = true;
+
+    const init = async () => {
+      try {
+        const { worker } = await import('../../mocks/browser');
+
+        await worker.start({
+          onUnhandledRequest: 'bypass',
+        });
+
+        if (mounted) {
+          console.log('[MSW] started');
+          setReady(true);
         }
-      } else {
-        setIsReady(true); // در محیط production بدون MSW اجرا کن
+      } catch (err) {
+        console.warn('[MSW] failed to start:', err);
+        if (mounted) setReady(true);
       }
     };
 
-    initMSW();
+    init();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
-  if (!isReady) {
-    // می‌توانید یک لودینگ نمایش دهید
-    return null;
+  if (!ready) {
+    return null; // یا loading spinner
   }
 
   return <>{children}</>;

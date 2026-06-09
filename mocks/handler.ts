@@ -199,6 +199,10 @@ export const handlers = [
         return HttpResponse.json({ exists: false });
     }),
 
+    http.get('/test-msw', () => {
+        return HttpResponse.json({ ok: true });
+    })
+
 
 ];
 
