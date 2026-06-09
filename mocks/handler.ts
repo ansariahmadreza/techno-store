@@ -203,6 +203,4 @@ export const handlers = [
         return HttpResponse.json({ ok: true });
     })
 
-
 ];
-
