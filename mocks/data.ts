@@ -11,7 +11,7 @@ const createSlug = (text: string) => {
         .toLowerCase();
 };
 
-export interface ProductSlider {
+export interface productslider {
     id: string;
     image: string;
     alt: string;
@@ -47,7 +47,7 @@ export interface User {
 
 }
 
-export const productSlider: ProductSlider[] = [
+export const productSlider: productslider[] = [
     {
         id: "1",
         image: "/img/1.gif",
